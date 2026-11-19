@@ -30,11 +30,16 @@ and hooks + evals enforce it.
 
 ## Quick start
 
-Not available yet — the installer lands in Phase 4. Planned usage:
-
 ```bash
+# macOS / Linux / Git Bash
 ./scripts/install.sh /path/to/your/project
+# Windows PowerShell
+.\scripts\install.ps1 -Target C:\path\to\your\project
 ```
+
+Then open the project in Claude Code and run `/sdd-init <your idea>`. The workflow is:
+`/sdd-init` → `/sdd-constitution` → `/sdd-prd` → `/sdd-data-model` → `/sdd-api` → `/sdd-ui` → `/sdd-architecture` → `/sdd-plan` → `/sdd-verify-spec` → `/sdd-implement TASK-001`,
+approving each spec with `/sdd-approve <id>`. Templates are installed to `.sdd/templates/`. The installer never overwrites existing files unless you pass `--force` / `-Force`.
 
 ## Origin
 
