@@ -25,7 +25,7 @@ and hooks + evals enforce it.
 | `.claude/skills/` | Reusable task skills |
 | `.claude/hooks/` | Guardrail scripts (spec-before-code, secrets, traceability) |
 | `evals/` | Executable rubrics and validators for specs |
-| `examples/` | A complete worked example |
+| `examples/notes-api/` | A complete worked example: approved specs plus the code and tests Claude implemented from them |
 | `scripts/` | Installer and validators |
 
 ## Quick start

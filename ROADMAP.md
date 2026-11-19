@@ -6,5 +6,5 @@
 - [x] Phase 4 — Agents, commands, skills, installers
 - [x] Phase 5 — Hooks and `settings.json` (6 hooks, 46 unit tests)
 - [x] Phase 6 — Evals and validators (9 deterministic checks, 10 rubrics, 6 behavioral cases, 50 self-tests)
-- [ ] Phase 7 — Worked example + end-to-end test
+- [x] Phase 7 — Worked example + end-to-end test (notes-api: 5 tasks implemented with /sdd-implement, 15 tests)
 - [ ] Phase 8 — Publish to GitHub (manual confirmation)

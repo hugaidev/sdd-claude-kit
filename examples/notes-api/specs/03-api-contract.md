@@ -19,14 +19,14 @@ Every error uses one envelope; `details` lists the offending fields for validati
 ```json
 { "error": { "code": "VALIDATION_ERROR", "message": "title is required", "details": [{ "field": "title", "reason": "required" }] } }
 ```
-Codes: `VALIDATION_ERROR` (400), `NOT_FOUND` (404), `UNSUPPORTED_MEDIA_TYPE` (415), `INTERNAL_ERROR` (500). There is no state-violation error because notes have no lifecycle states (see data model).
+Codes: `VALIDATION_ERROR` (400), `NOT_FOUND` (404), `PAYLOAD_TOO_LARGE` (413, request body above 1 MiB, rejected before parsing), `UNSUPPORTED_MEDIA_TYPE` (415), `INTERNAL_ERROR` (500). There is no state-violation error because notes have no lifecycle states (see data model).
 
 ## 3. Endpoints
 ### POST /v1/notes  (traces: REQ-001)
 - Auth / roles: none
 - Request body: `{ "title": string (trimmed, 1 to 120 characters), "body": string (0 to 10000 characters) }`
 - Response 201: `{ "id": uuid, "title": string, "body": string, "created_at": timestamp }`
-- Errors: 400 `VALIDATION_ERROR` (missing or oversize field, malformed JSON; `details` names each field), 415 `UNSUPPORTED_MEDIA_TYPE` (content type is not JSON)
+- Errors: 400 `VALIDATION_ERROR` (missing or oversize field, malformed JSON; `details` names each field), 413 `PAYLOAD_TOO_LARGE` (request body above 1 MiB), 415 `UNSUPPORTED_MEDIA_TYPE` (content type is not JSON)
 
 ### GET /v1/notes  (traces: REQ-002)
 - Auth / roles: none

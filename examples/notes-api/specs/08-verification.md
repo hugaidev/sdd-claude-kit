@@ -26,7 +26,7 @@ Integration tests drive the HTTP layer against a database file in a temporary fo
 ### TEST-001 (traces: REQ-001)
 - Preconditions: empty store
 - Steps: (a) POST `{"title":"note-001","body":"hello"}`; (b) POST with title `""`; (c) POST with a title of 121 characters; (d) POST with a body of 10001 characters; (e) POST with a text/plain content type; (f) POST malformed JSON
-- Expected: (a) 201 with `id`, `title`, `body`, `created_at`; (b) 400 `VALIDATION_ERROR` with `details[0].field == "title"`; (c) 400 naming `title`; (d) 400 naming `body`; (e) 415 `UNSUPPORTED_MEDIA_TYPE`; (f) 400 `VALIDATION_ERROR`; the store contains exactly one note afterwards
+- Expected: (a) 201 with `id`, `title`, `body`, `created_at`; (b) 400 `VALIDATION_ERROR` with `details[0].field == "title"`; (c) 400 naming `title`; (d) 400 naming `body`; (e) 415 `UNSUPPORTED_MEDIA_TYPE`; (f) 400 `VALIDATION_ERROR`; (g) a request body above 1 MiB gives 413 `PAYLOAD_TOO_LARGE`; the store contains exactly one note afterwards
 
 ### TEST-002 (traces: REQ-002)
 - Preconditions: 25 stored notes created at distinct times, plus two notes created with the same timestamp
