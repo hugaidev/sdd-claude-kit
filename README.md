@@ -74,7 +74,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Run `bash scripts/validate.sh`, `bash sc
 
 ## Origin
 
-Evolved from the author's earlier SDD guides, rewritten for Claude Code, made stack-agnostic, and turned from prose into executable parts.
+Evolved from the author's earlier SDD guides, rewritten for Claude Code, made stack-agnostic, and turned from prose into executable parts. The original repositories are now archived:
+
+- [slackdevs/spec-driven-development-guides](https://github.com/slackdevs/spec-driven-development-guides): the original four guides (CC0).
+- [slackdevs/sdc-spec-driven-development-guides](https://github.com/slackdevs/sdc-spec-driven-development-guides): a second copy of the same guides with a longer commit history (identical content).
 
 ## License
 
