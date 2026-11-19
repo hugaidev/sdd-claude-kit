@@ -1,0 +1,5 @@
+DESCRIPTION="/sdd-approve refuses a spec that still has placeholders"
+FIXTURE="bad"
+SETUP='sed -i "s/^status: approved/status: draft/" specs/01-prd.md'
+PROMPT="/sdd-approve 01-prd"
+ASSERT='grep -q "^status: draft" specs/01-prd.md'

@@ -5,6 +5,6 @@
 - [x] Phase 3 — Docs (EN + `docs/es/`)
 - [x] Phase 4 — Agents, commands, skills, installers
 - [x] Phase 5 — Hooks and `settings.json` (6 hooks, 46 unit tests)
-- [ ] Phase 6 — Evals and validators
+- [x] Phase 6 — Evals and validators (9 deterministic checks, 10 rubrics, 6 behavioral cases, 50 self-tests)
 - [ ] Phase 7 — Worked example + end-to-end test
 - [ ] Phase 8 — Publish to GitHub (manual confirmation)

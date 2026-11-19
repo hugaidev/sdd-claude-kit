@@ -7,3 +7,5 @@ jobs:
       - uses: actions/checkout@v4
       - run: bash scripts/validate.sh
       - run: bash scripts/test-hooks.sh
+      - run: bash scripts/test-evals.sh
+      - run: bash evals/deterministic.sh examples/notes-api

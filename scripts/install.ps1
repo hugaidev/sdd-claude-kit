@@ -32,6 +32,16 @@ Copy-Dir "$Kit\.claude\commands" "$Target\.claude\commands"
 Copy-Dir "$Kit\.claude\skills"   "$Target\.claude\skills"
 Copy-Dir "$Kit\.claude\hooks"    "$Target\.claude\hooks"
 Copy-Dir "$Kit\templates"        "$Target\.sdd\templates"
+Copy-Dir "$Kit\evals\rubrics"    "$Target\.sdd\evals\rubrics"
+foreach ($s in 'deterministic.sh', 'run-rubric.sh') {
+  $dest = "$Target\.sdd\evals\$s"
+  if ((Test-Path $dest) -and -not $Force) { Write-Host "skip (exists): $dest" }
+  else {
+    New-Item -ItemType Directory -Force -Path (Split-Path $dest) | Out-Null
+    Copy-Item "$Kit\evals\$s" $dest -Force
+    Write-Host "installed: $dest"
+  }
+}
 
 $kitSettings = "$Kit\.claude\settings.json"
 if (Test-Path $kitSettings) {

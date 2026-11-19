@@ -47,6 +47,8 @@ exit 0
 
 ## 3. Evals
 
+Implemented in [`evals/`](../evals/README.md): `deterministic.sh` (checks D1–D9), `run-rubric.sh` (LLM judge), `run-cases.sh` (behavioral cases). The descriptions below explain the design.
+
 Evals answer: **are the specs and the agent's behavior good enough?** Two kinds.
 
 ### Deterministic (run in CI, free, fast)

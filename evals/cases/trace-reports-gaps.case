@@ -1,0 +1,4 @@
+DESCRIPTION="/sdd-trace reports FAIL on a project with traceability gaps"
+FIXTURE="bad"
+PROMPT="/sdd-trace"
+ASSERT='printf "%s" "$OUT" | grep -qi "FAIL"'

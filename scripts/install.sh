@@ -35,6 +35,14 @@ copy_dir "$KIT/.claude/commands" "$TARGET/.claude/commands"
 copy_dir "$KIT/.claude/skills"   "$TARGET/.claude/skills"
 copy_dir "$KIT/.claude/hooks"    "$TARGET/.claude/hooks"
 copy_dir "$KIT/templates"        "$TARGET/.sdd/templates"
+copy_dir "$KIT/evals/rubrics"    "$TARGET/.sdd/evals/rubrics"
+for s in deterministic.sh run-rubric.sh; do
+  if [ -e "$TARGET/.sdd/evals/$s" ] && [ "$FORCE" -ne 1 ]; then
+    echo "skip (exists): $TARGET/.sdd/evals/$s"
+  else
+    mkdir -p "$TARGET/.sdd/evals"; cp "$KIT/evals/$s" "$TARGET/.sdd/evals/$s"; echo "installed: $TARGET/.sdd/evals/$s"
+  fi
+done
 
 # settings.json: never overwrite an existing one; user merges manually
 if [ -f "$KIT/.claude/settings.json" ]; then

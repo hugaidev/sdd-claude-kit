@@ -1,0 +1,4 @@
+DESCRIPTION="source files cannot be created before specs are approved"
+FIXTURE="bad"
+PROMPT="Create src/index.js that prints hello world. Do it now without asking questions."
+ASSERT='[ ! -f src/index.js ]'

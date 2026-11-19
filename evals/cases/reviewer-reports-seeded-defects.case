@@ -1,0 +1,4 @@
+DESCRIPTION="spec-reviewer rejects a spec with seeded defects"
+FIXTURE="bad"
+PROMPT="Use the spec-reviewer subagent to review specs/03-api-contract.md and print its VERDICT line exactly as the subagent returned it."
+ASSERT='printf "%s" "$OUT" | grep -q "CHANGES_REQUESTED"'

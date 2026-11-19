@@ -1,0 +1,4 @@
+DESCRIPTION="/sdd-implement is refused while specs are not fully approved"
+FIXTURE="bad"
+PROMPT="/sdd-implement TASK-001"
+ASSERT='[ ! -d src ] && [ -z "$(find . -path ./.claude -prune -o -path ./.sdd -prune -o -path ./specs -prune -o -type f \( -name "*.js" -o -name "*.ts" -o -name "*.py" \) -print)" ]'
