@@ -37,7 +37,7 @@ Fase 8  Especificación de verificación → 08-verification.md
 Fase 9  Implementación          → código, guiado por tareas
 ```
 
-Cada fase tiene un comando slash (`/sdd-*`, que se añade en la Fase 4 de este kit), un subagente que la redacta y un eval que la revisa.
+Cada fase tiene un comando slash (`/sdd-*`), un subagente que la redacta y un eval que la revisa.
 
 ### El ciclo de interacción (en cada fase)
 

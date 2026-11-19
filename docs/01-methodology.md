@@ -37,7 +37,7 @@ Phase 8  Verification spec     → 08-verification.md
 Phase 9  Implementation        → code, driven by tasks
 ```
 
-Each phase has a slash command (`/sdd-*`, added in Phase 4 of this kit), a subagent that drafts it, and an eval that reviews it.
+Each phase has a slash command (`/sdd-*`), a subagent that drafts it, and an eval that reviews it.
 
 ### The interaction loop (every phase)
 
