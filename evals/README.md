@@ -66,6 +66,17 @@ Each `evals/cases/<name>.case` installs the kit into a temporary sandbox, copies
 
 Model behavior is non-deterministic: run a failing case a few times before concluding it is a regression.
 
+## Verified against a real model
+
+Run with Claude Code 2.1.328 on Windows (Git Bash):
+- All 6 behavioral cases pass. Sabotage check: with `SDD_ENFORCE=off` the `code-blocked-before-approval` case fails (the file gets created), so the assertion really depends on the guardrail.
+- Rubric judge on `examples/notes-api`: all 8 specs with a rubric pass (0.81 to 1.00). Before the example was improved, the judge scored several of its specs 0.44 to 0.74 and the findings were fixed, so the rubrics do discriminate.
+
+Notes from those runs:
+- In freshly created sandbox folders Claude Code prints "workspace has not been trusted" and ignores `permissions.allow` entries from `.claude/settings.json`. `deny` rules and hooks still apply, which is what the cases test. The warning lines are ignored by the rubric parser.
+- Permission deny rules are matched by `Edit(path)`; a `Write(path)` rule is rejected with a warning, so the kit only uses `Edit(...)` rules for files.
+- Use `VERBOSE=1 bash evals/run-rubric.sh <spec>` to see the judge's evidence quotes.
+
 ## Fixtures
 
 - `examples/notes-api/` — a small, fully approved, consistent project. Must pass 9/9.

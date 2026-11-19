@@ -33,8 +33,11 @@ erDiagram
 | ID | Rule | Enforced at | Traces |
 |----|------|-------------|--------|
 | BR-001 | Title is required and at most 120 characters | service layer | REQ-001 |
-| BR-002 | Notes are ordered by created_at descending, ties by id | repository | REQ-002 |
-| BR-003 | Deletion is permanent (hard delete) | repository | REQ-003 |
+| BR-002 | Notes are ordered by created_at descending, ties broken by id ascending; the pagination cursor encodes the created_at and id of the last returned note, so no note is skipped or repeated | repository | REQ-002 |
+| BR-003 | Deletion is permanent (hard delete); deleting a missing note is a not-found outcome and changes nothing | repository | REQ-003 |
+| BR-004 | Body is at most 10000 characters (empty allowed) | service layer | REQ-001 |
+| BR-005 | Notes are immutable after creation: there is no update operation in this version | service layer | REQ-001 |
+| BR-006 | Acknowledged writes are durable across process restarts (NFR-003) | repository | REQ-001 |
 
 ## 4. State machines
 None: a note has no lifecycle states beyond existing or deleted.

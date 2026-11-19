@@ -78,5 +78,6 @@ RESULT="$(printf '%s\n' "$CRITERIA" | awk -F'|' -v rawfile="$TMPRAW" -v thr="$TH
   }')"
 
 echo "Rubric: $(basename "$RUBRIC")  Spec: $ID"
+[ -n "${VERBOSE:-}" ] && { echo "--- judge output ---"; cat "$TMPRAW"; echo "--- scores ---"; }
 printf '%s\n' "$RESULT"
 printf '%s\n' "$RESULT" | grep -q '^VERDICT: PASS'
