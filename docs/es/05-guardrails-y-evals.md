@@ -29,7 +29,8 @@ Los prompts piden; los guardrails obligan; los evals miden. Este kit usa los tre
 
 - Entrada: JSON por stdin (`tool_name`, `tool_input`, `cwd`, …).
 - **Exit 0** = permitir. **Exit 2** = bloquear; stderr se muestra a Claude para que corrija el rumbo. Otros códigos = error no bloqueante.
-- Hooks rápidos (< 1 s), deterministas y con pocas dependencias (bash o Node).
+- Hooks rápidos, deterministas y con pocas dependencias. Los del kit son bash puro (grep/sed/awk): no necesitan `jq`, Python ni Node. En Windows corren vía Git Bash, donde lanzar procesos es lento (medido: cerca de 1 s por llamada), así que mantenlos pequeños.
+- Válvulas de escape: `SDD_ENFORCE=off` desactiva el bloqueo de código sin specs aprobadas durante una sesión; `.sdd/required-specs` define qué specs deben estar aprobadas; `SDD_TRACE_STRICT=1` vuelve bloqueante el chequeo de trazabilidad del hook Stop.
 - Fallar **cerrado** en hooks de seguridad, **abierto** en los de conveniencia.
 
 Ejemplo (esbozo):

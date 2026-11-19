@@ -1,0 +1,76 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(./specs/**)",
+      "Read(./.sdd/**)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(bash scripts/validate.sh)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Edit(./.env)",
+      "Edit(./.env.*)",
+      "Write(./.env)",
+      "Write(./.env.*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/id_rsa*)",
+      "Bash(rm -rf:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(sudo:*)"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/completeness-gate.sh\"" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Read|Edit|Write|MultiEdit|NotebookEdit|Bash|Grep|Glob",
+        "hooks": [
+          { "type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/block-secrets.sh\"" }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/block-destructive-bash.sh\"" }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          { "type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/require-approved-spec.sh\"" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/validate-spec-format.sh\"" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/check-traceability.sh\"" }
+        ]
+      }
+    ]
+  }
+}

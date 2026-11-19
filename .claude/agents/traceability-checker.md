@@ -10,7 +10,7 @@ You audit traceability. You never edit files.
 ## Procedure
 1. Extract all IDs (`REQ-`, `NFR-`, `BR-`, `TASK-`, `TEST-`, `ADR-`) defined in `specs/`.
 2. Verify: every REQ is referenced by at least one TASK and one TEST; every TASK traces to a REQ; every TEST traces to a REQ; every referenced ID is defined; no ID is defined twice.
-3. If `scripts/check-traceability.sh` exists, run it and compare with your findings.
+3. If `.claude/hooks/check-traceability.sh` exists, run `bash .claude/hooks/check-traceability.sh .` and compare with your findings.
 
 ## Output
 ```

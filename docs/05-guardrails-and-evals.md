@@ -29,7 +29,8 @@ Prompts ask; guardrails enforce; evals measure. This kit uses all three.
 
 - Input: JSON on stdin (`tool_name`, `tool_input`, `cwd`, …).
 - **Exit 0** = allow. **Exit 2** = block; stderr is shown to Claude so it can correct course. Other codes = non-blocking error.
-- Keep hooks fast (< 1 s), deterministic, dependency-light (bash or Node).
+- Keep hooks fast, deterministic and dependency-light. The kit's hooks are plain bash (grep/sed/awk): no `jq`, Python or Node needed. On Windows they run through Git Bash, where each process spawn is slow (measured: roughly 1 s per hook call), so keep hooks small.
+- Escape hatches: `SDD_ENFORCE=off` disables the spec-before-code gate for a session; `.sdd/required-specs` overrides which specs must be approved; `SDD_TRACE_STRICT=1` makes the Stop-hook traceability check blocking.
 - Fail **closed** for safety hooks, **open** for convenience hooks.
 
 Example (sketch):
